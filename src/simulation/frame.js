@@ -1,23 +1,19 @@
 Game.getFrame = function (state) {
   const vector = Game.vector;
-  const up = vector.normalize(state.position);
-  const right = vector.normalize(vector.cross(state.heading, up));
-  const forward = vector.add(vector.scale(state.heading, Math.cos(state.pitch)),
-    vector.scale(up, Math.sin(state.pitch)));
+  const forward = vector.normalize(state.forward);
+  const right = vector.normalize(vector.cross(forward, state.up));
   const viewUp = vector.normalize(vector.cross(right, forward));
-  return { up, right, forward, viewUp };
+  return { forward, right, up: state.up, viewUp };
 };
-Game.transportHeading = function (heading, oldUp, newUp) {
+Game.rotateOrientation = function (state, mouseX, mouseY) {
   const vector = Game.vector;
-  const cross = vector.cross(oldUp, newUp);
-  const sine = vector.length(cross);
-  const cosine = Math.max(-1, Math.min(1, vector.dot(oldUp, newUp)));
-  let transported = heading;
-  if (sine > Game.config.EPSILON) {
-    transported = vector.rotate(heading, vector.scale(cross, 1 / sine),
-      Math.atan2(sine, cosine));
-  }
-  // Removing numerical drift also handles the antipodal tangent case.
-  return vector.normalize(vector.subtract(transported,
-    vector.scale(newUp, vector.dot(transported, newUp))));
+  let frame = Game.getFrame(state);
+  // Yaw turns around the character's own up; pitch uses its own right axis.
+  let forward = vector.rotate(frame.forward, frame.up,
+    -mouseX * Game.config.MOUSE_SENSITIVITY);
+  frame = Game.getFrame({ ...state, forward });
+  forward = vector.rotate(frame.forward, frame.right,
+    -mouseY * Game.config.MOUSE_SENSITIVITY);
+  state.forward = vector.normalize(forward);
+  state.up = vector.normalize(vector.cross(frame.right, state.forward));
 };

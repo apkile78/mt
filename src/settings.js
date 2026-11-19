@@ -1,4 +1,4 @@
-// Classic scripts work with local files, without modules or network requests.
+// Keep shared settings in one namespace for local classic-script loading.
 window.Game = window.Game || {};
 Game.config = Object.freeze({
   EARTH_RADIUS: 6371000,
@@ -11,7 +11,6 @@ Game.config = Object.freeze({
   MAX_SPEED: 10000000,
   SPEED_FACTOR: 2,
   MOUSE_SENSITIVITY: 0.002,
-  PITCH_LIMIT: Math.PI / 2 - 0.001,
   MAX_FRAME_SECONDS: 0.05,
   MILLISECONDS_PER_SECOND: 1000,
   FIELD_OF_VIEW: 70,

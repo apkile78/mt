@@ -8,7 +8,7 @@ Game.createInterface = function (canvas) {
   }
   button.disabled = false;
   button.textContent = "Enter";
-  message.textContent = "E flies outward; Q flies inward. No gravity or noclip.";
+  message.textContent = "E/Q move along your own up/down; looking is unrestricted.";
   button.addEventListener("click", function () {
     try {
       const request = canvas.requestPointerLock();

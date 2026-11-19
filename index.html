@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Earth Navigation</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <div id="hud">
+    <div>Earth Navigation</div>
+    <p id="telemetry"></p>
+    <p>WASD: fly · E/Q: out/in · Mouse: look</p>
+    <p>Wheel or ] / [: speed · Esc: pause</p>
+  </div>
+  <div id="crosshair" aria-hidden="true">+</div>
+  <main id="menu">
+    <section>
+      <h1>Earth Navigation</h1>
+      <p>Gravity-free flight. Solid spherical ground.</p>
+      <button id="start" disabled>Loading…</button>
+      <p id="message">Loading local files…</p>
+    </section>
+  </main>
+  <script src="lib/three.js"></script>
+  <script src="src/settings.js"></script>
+  <script src="src/simulation/vector.js"></script>
+  <script src="src/simulation/frame.js"></script>
+  <script src="src/simulation/collision.js"></script>
+  <script src="src/simulation/navigation.js"></script>
+  <script src="src/input/controls.js"></script>
+  <script src="src/rendering/shaders.js"></script>
+  <script src="src/rendering/view.js"></script>
+  <script src="src/ui/interface.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #080b10;
+  color: #e4eadf;
+  font-family: Arial, sans-serif;
+}
+canvas { display: block; }
+#hud {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 2;
+  pointer-events: none;
+  text-shadow: 0 1px 3px black;
+}
+#hud p { margin: 8px 0; font-size: 12px; }
+#telemetry { white-space: pre-line; line-height: 1.6; }
+#crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+#menu {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(5, 10, 15, 0.85);
+}
+#menu.hidden { display: none; }
+section {
+  max-width: 460px;
+  padding: 30px;
+  background: #18232c;
+  border: 1px solid #728b87;
+}
+h1 { margin-top: 0; font-weight: normal; }
+p { line-height: 1.6; }
+button {
+  padding: 12px 20px;
+  border: 0;
+  background: #bdd2ba;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: wait; }
+#message { font-size: 12px; }

@@ -11,7 +11,8 @@ Game.createView = function () {
     aspect: { value: 1 },
     halfViewTangent: { value: Math.tan(config.FIELD_OF_VIEW * Math.PI / 360) },
     radius: { value: config.EARTH_RADIUS },
-    altitude: { value: 0 }
+    altitude: { value: 0 },
+    landMask: { value: Game.createLandTexture() }
   };
   const material = new THREE.ShaderMaterial({
     uniforms,
